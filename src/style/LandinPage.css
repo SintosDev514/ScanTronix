@@ -1,0 +1,8 @@
+#SectionOne {
+  width: 100%;
+  background-color: none;
+  border: solid 2px red;
+  height: 500px;
+  position: absolute;
+  z-index: 100;
+}
