@@ -1,12 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap");
 * {
-  padding: 0%;
-  margin: 0%;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(255, 255, 255);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-Canvas {
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: rgb(16, 16, 16);
+}
+
+.model-wrapper {
+  position: relative;
   width: 100vw;
-  height: 3000px;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.hero-div {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  padding: 1%;
+  transform: translateX(-50%);
+  color: white;
+  border: solid 2px red;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0; /* Make sure it’s above the canvas */
+  text-align: center;
+}
+
+.hero-div h2 {
+  opacity: 1;
+  font-family: "Orbitron", sans-serif;
+  color: rgb(255, 255, 255);
+  padding-top: 30%;
+  font-size: 200px;
+  font-weight: bold;
+}
+
+.sec2 {
+  height: 2000px;
+  width: 100vw;
+  z-index: 1;
+}
+
+.sec3 {
+  height: 100vh;
+  width: 100vw;
+
+  z-index: 2;
 }

@@ -9,6 +9,8 @@ import LandingPage from "./landingPage.jsx";
 
 import "./style/ModelObject.css";
 
+///GSAP
+
 const Model = () => {
   const gltf = useLoader(GLTFLoader, "/free_mixamo_retextured_model.glb");
 
@@ -52,8 +54,8 @@ const CameraScroll = () => {
   }, []);
 
   useFrame(({ camera }) => {
-    camera.position.z = 5 + scrollY.current;
-    camera.position.y = scrollY.current * 0.5;
+    camera.position.z = 8 + scrollY.current * 0.5;
+    camera.position.y = scrollY.current;
     camera.lookAt(0, 0, 0);
   });
 
@@ -62,17 +64,27 @@ const CameraScroll = () => {
 
 const ModelObject = () => {
   return (
-    <Canvas camera={{ position: [0, 1, 0.5], fov: 50 }}>
-      <ambientLight intensity={2.5} />
+    <>
+      <div className="model-wrapper">
+        <Canvas camera={{ position: [0, 1, 0.5], fov: 60 }}>
+          <ambientLight intensity={2.5} />
 
-      <directionalLight position={[0, 25, 20]} intensity={10} />
+          <directionalLight position={[0, 25, 20]} intensity={10} />
 
-      <spotLight intensity={200} position={[0, 15, 1]} color="green" />
+          <spotLight intensity={200} position={[0, 15, 1]} color="green" />
 
-      <Model />
+          <Model />
 
-      <CameraScroll />
-    </Canvas>
+          <CameraScroll />
+        </Canvas>
+        <div className="hero-div">
+          <h2 id="hero-text"> Scan Tronix</h2>
+        </div>
+      </div>
+
+      <div className="sec2">Section 2</div>
+      <div className="sec3">Section 3</div>
+    </>
   );
 };
 
