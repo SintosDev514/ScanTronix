@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap");
+#X {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 1%;
+  background: rgb(0, 0, 0);
+  overflow: hidden;
+
+  display: flex;
+  text-align: center;
+}
+
+#bar {
+  width: 0%; /* start at 0%, will update via JS */
+  height: 10px;
+  background: white;
+  transition: width 0.1s ease-in-out;
+}
+
+#percent {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  font-family: "Orbitron", sans-serif;
+  font-size: 100px;
+  bottom: 0;
+  right: 0;
+  margin: 1%;
+}
