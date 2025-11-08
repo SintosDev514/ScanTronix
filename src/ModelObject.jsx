@@ -1,17 +1,27 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 {
   /*import { useLoader } from "@react-three/fiber";*/
 }
-import { AnimationMixer, LoadingManager } from "three";
+import { AnimationMixer, LoadingManager, TextureLoader } from "three";
 import { OrbitControls } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 import "./style/ModelObject.css";
 import LoadingBar from "./pages/Loading";
+
+const LogoImage = () => {
+  const texture = useLoader(TextureLoader, "/logo_white.png");
+  return (
+    <mesh position={[0, -13.8, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+      <planeGeometry args={[40, 40]} />
+      <meshBasicMaterial map={texture} transparent={true} alphaTest={0.5} />
+    </mesh>
+  );
+};
 
 const Model = ({ setProgress, onLoaded }) => {
   const [gltf, setGltf] = useState(null);
@@ -66,7 +76,7 @@ const CameraScroll = () => {
 
   useFrame(({ camera }) => {
     camera.position.z = 8 + scrollY.current * 0.5;
-    camera.position.y = scrollY.current;
+    camera.position.y = scrollY.current * 1;
     camera.lookAt(0, 0, 0);
   });
 
@@ -98,10 +108,11 @@ const ModelObject = () => {
       {!loaded && <LoadingBar progress={progress} />}
       <div className="model-wrapper">
         <Canvas camera={{ position: [0, 10, 10], fov: 80 }} dpr={[1, 1.5]}>
-          <ambientLight intensity={1.5} />
+          <ambientLight intensity={3} color="green" />
           <directionalLight position={[0, 25, 20]} intensity={2} />
           <spotLight intensity={5} position={[0, 15, 1]} color="green" />
           <Model setProgress={setProgress} onLoaded={() => setLoaded(true)} />
+          <LogoImage />
           <CameraScroll />
         </Canvas>
 
@@ -112,6 +123,7 @@ const ModelObject = () => {
 
       <div className="sec2">Section 2</div>
       <div className="sec3">Section 3</div>
+      <div className="sec4">Section 4</div>
     </>
   );
 };
