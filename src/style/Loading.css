@@ -12,7 +12,7 @@
 
 #bar {
   width: 0%; /* start at 0%, will update via JS */
-  height: 10px;
+  height: 8px;
   background: white;
   transition: width 0.1s ease-in-out;
 }
