@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import Header from "./Header";
 
 {
   /*import { useLoader } from "@react-three/fiber";*/
@@ -48,8 +49,12 @@ const CameraScroll = () => {
   }, []);
 
   useFrame(({ camera }) => {
-    camera.position.z = 8 + scrollY.current * 0.5;
-    camera.position.y = scrollY.current * 1;
+    gsap.to(camera.position, {
+      x: (scrollY.current - 2) / -2,
+      z: 8 + scrollY.current * 3,
+      ease: "power2.out",
+      duration: 0.5,
+    });
     camera.lookAt(0, 0, 0);
   });
 
@@ -90,7 +95,11 @@ const Model = ({ setProgress, onLoaded }) => {
 
   if (!gltf) return null;
   return (
-    <primitive object={gltf.scene} scale={[3, 3, 3]} position={[0, -8, 5]} />
+    <primitive
+      object={gltf.scene}
+      scale={[3, 3, 3]}
+      position={[2.5, -8.3, 5]}
+    />
   );
 };
 
@@ -135,25 +144,24 @@ const ModelObject = () => {
   return (
     <>
       {!loaded && <LoadingBar progress={progress} />}
+      <Header />
       <div className="model-wrapper">
-        <Canvas camera={{ position: [0, 10, 5], fov: 80 }}>
+        <Canvas camera={{ position: [7, 0, 5], fov: 80 }}>
           <ambientLight intensity={3} color="black" />
           <directionalLight position={[0, 25, 20]} intensity={2} />
           <spotLight intensity={5} position={[0, 15, 1]} color="white" />
           <Model setProgress={setProgress} onLoaded={() => setLoaded(true)} />
 
-          {/*      <LogoImage />
-           */}
           <CameraScroll />
         </Canvas>
-
-        <div className="hero-div">
-          <h1 id="hero-text">ScanTronix</h1>
-        </div>
       </div>
 
       <div className="sec2">Section 2</div>
-      <div className="sec3">Section 3</div>
+      <div className="sec3">
+        <div className="bg-red-300 w-[300px] min-h-[400px]">
+          <h2>Hello </h2>
+        </div>
+      </div>
       <div className="sec4">Section 4</div>
       <div className="sec5">Section 5</div>
     </>
