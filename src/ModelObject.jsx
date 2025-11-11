@@ -90,7 +90,7 @@ const Model = ({ setProgress, onLoaded }) => {
 
   if (!gltf) return null;
   return (
-    <primitive object={gltf.scene} scale={[5, 5, 5]} position={[6, -14.7, 5]} />
+    <primitive object={gltf.scene} scale={[3, 3, 3]} position={[0, -8, 5]} />
   );
 };
 
@@ -136,7 +136,7 @@ const ModelObject = () => {
     <>
       {!loaded && <LoadingBar progress={progress} />}
       <div className="model-wrapper">
-        <Canvas camera={{ position: [14, 10, 5], fov: 80 }} dpr={[1, 1.5]}>
+        <Canvas camera={{ position: [0, 10, 5], fov: 80 }}>
           <ambientLight intensity={3} color="black" />
           <directionalLight position={[0, 25, 20]} intensity={2} />
           <spotLight intensity={5} position={[0, 15, 1]} color="white" />
@@ -148,13 +148,14 @@ const ModelObject = () => {
         </Canvas>
 
         <div className="hero-div">
-          {/*    <h3 id="hero-text">ScanTronix</h3>*/}
+          <h1 id="hero-text">ScanTronix</h1>
         </div>
       </div>
 
       <div className="sec2">Section 2</div>
       <div className="sec3">Section 3</div>
       <div className="sec4">Section 4</div>
+      <div className="sec5">Section 5</div>
     </>
   );
 };

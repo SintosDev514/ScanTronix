@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Iceland&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -17,7 +17,7 @@ canvas {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: rgb(16, 16, 16);
+  background: #000000;
 }
 
 .model-wrapper {
@@ -41,13 +41,21 @@ canvas {
   text-align: center;
 }
 
-.hero-div h3 {
+.hero-div h1 {
   opacity: 0;
-  font-family: "Orbitron", sans-serif;
-  color: rgb(255, 255, 255);
-  padding-top: 30%;
-  font-size: 100px;
-  font-weight: bold;
+  color: rgba(36, 36, 36, 0.605);
+  margin-top: 30%;
+  font-size: 250px;
+  background-color: rgba(255, 255, 255, 0);
+  font-family: "Iceland", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  transition: 0.3s;
+}
+
+.hero-div h1:hover {
+  opacity: 1;
+  border: solid 1px green;
 }
 
 .sec2 {
@@ -66,9 +74,24 @@ canvas {
 .sec4 {
   height: 100vh;
   width: 100vw;
-  background-color: white;
   z-index: 3;
+  background: #000000;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 24%,
+    rgba(7, 95, 24, 1) 69%,
+    rgba(9, 121, 31, 1) 78%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
+
+.sec5 {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(0, 0, 0);
+  z-index: 2;
+}
+
 /*loder*/
 
 .loader {
